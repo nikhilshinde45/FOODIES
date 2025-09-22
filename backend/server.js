@@ -1,6 +1,6 @@
 const express=require("express");
 const cors=require("cors");
-const connectDB=require("./utils/db.js");
+const connecToDB=require("./configs/dbconfig.js");
 const dotenv=require("dotenv");
 const cookieParser=require("cookie-parser")
 
@@ -24,6 +24,6 @@ app.get("/",(req,res)=>{
 const PORT=process.env.PORT||3000;
 
 app.listen(PORT,()=>{
-  connectDB();
+ connecToDB();
   console.log(`Server is runnig at http://localhost:${PORT}`);
 });
