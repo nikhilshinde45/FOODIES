@@ -17,7 +17,7 @@ const corsOptions={
 app.use(cors(corsOptions));
 app.get("/",(req,res)=>{
   return res.status(200).json({
-    message:"I am coming from backend",
+    message:"Hey,I am coming from backend",
     success:true,
   });
 });
