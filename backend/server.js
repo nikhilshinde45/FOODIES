@@ -2,10 +2,13 @@ const express=require("express");
 const cors=require("cors");
 const connecToDB=require("./configs/dbconfig.js");
 const dotenv=require("dotenv");
-const cookieParser=require("cookie-parser")
+const cookieParser=require("cookie-parser");
+const {userRouter}=require('./routes/userRoute.js');
+const {staffRouter} = require('./routes/staffRoutes.js');
 
 dotenv.config();
 const app =express();
+//middlewares
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -21,6 +24,10 @@ app.get("/",(req,res)=>{
     success:true,
   });
 });
+
+app.use('/user',userRouter);//user authentication routes
+app.use('/staff',staffRouter);//staff authentication routes
+
 const PORT=process.env.PORT||3000;
 
 app.listen(PORT,()=>{
