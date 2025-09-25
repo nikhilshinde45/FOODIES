@@ -48,7 +48,7 @@ Thankyou...
 Team Foodies`,
     });
 
-    console.log("Verification coe email sent");
+    console.log("Verification code email sent");
   } catch (error) {
     console.log("Error sending signup email", error);
   }
