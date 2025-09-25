@@ -11,6 +11,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginStaff = async (req, res) => {
+ 
   try {
     const { username, password, role } = req.body;
     if (role === "admin") {
@@ -75,7 +76,7 @@ const loginStaff = async (req, res) => {
     } else if (role === "waiter") {
       const waiter = await Waiter.findOne({ username });
       if (waiter) {
-        const isMatch3 = bcrypt.compare(password, waiter.password);
+        const isMatch3 = await bcrypt.compare(password, waiter.password);
         if (!isMatch3) {
           res.json({
             status: 400,
@@ -87,7 +88,7 @@ const loginStaff = async (req, res) => {
               id: waiter._id,
               username: waiter.username,
               name: waiter.name,
-              privilege: waiter.priviliege,
+              privilege: waiter.privilege,
             },
             process.env.SECRET
           );
