@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const feedbackSchema = new mongoose.Schema({
   custId : String,//who wrote the review
   review :String,//what content he/she wrote
-  name : String,//name of cust whi wrote 
+  name : String,//name of cust who wrote 
   dateTime :{
     type:String,
     default:''
