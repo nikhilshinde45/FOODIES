@@ -1,11 +1,11 @@
 const { Waiter } = require("../../models/waiterModel");
-const { bcrypt } = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 const getWaiterList = async (req, res) => {
   try {
     const privilege = req.privilege;
     if (privilege === "admin") {
-      const data = await Waiter.find({ priviliege: "waiter" });
+      const data = await Waiter.find({ privilege: "waiter" });
       res.json({
         status: 200,
         message: "Here are all waiters",
@@ -58,6 +58,7 @@ const addWaiter = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
     res.json({
       status: 500,
       message: "Internal Server Error",
@@ -141,7 +142,7 @@ const freeAllWaiters = async (req, res) => {
     const privilege = req.privilege;
     if (privilege === "admin") {
       const waiters = await Waiter.updateMany(
-        { priviliege: "waiter" },
+        { privilege: "waiter" },
         { $set: { servingTable: [] } }
       );
       if (waiters) {
