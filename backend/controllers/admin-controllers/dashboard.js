@@ -11,7 +11,7 @@ const getDashboardData = async (req, res) => {
     const privilege = req.privilege;
     if (privilege === "admin") {
       const customers = await User.find({});
-      const waiters = await Waiter.find({ priviliege: "waiter" });
+      const waiters = await Waiter.find({ privilege: "waiter" });
       const chefs = await Chef.find({ privilege: "chef" });
       const orders = await KOT.find({ billStatus: "pending" });
       const tables = await Table.find({});
@@ -31,7 +31,7 @@ const getDashboardData = async (req, res) => {
         ? waitlistCount[0].totalWaitlistItems
         : 0;
       const freeWaiters = await Waiter.find({
-        priviliege: "waiter",
+        privilege: "waiter",
         servingTable: { $size: 0 },
       });
       res.json({
