@@ -42,7 +42,7 @@ const completeOrderCooking = async (req, res) => {
         }
       );
       const kds = await KDS.findByIdAndUpdate(
-        { _id: id },
+         id ,
         {
           $pull: { items: null },
         },
