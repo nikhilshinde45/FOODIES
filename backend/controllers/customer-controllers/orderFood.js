@@ -31,12 +31,13 @@ const putOrders = async (req, res) => {
     if (privilege === "user") {
       const { orderList, total } = req.body;
       const custId = req.id;
-      const kot = await KOT.findByIdAndUpdate(
+      const kot = await KOT.findOneAndUpdate(
         { custId, billStatus: "pending" },
         {
           $inc: { totalPrice: total },
           $push: { items: { $each: orderList } },
-        }
+        },
+        {new:true}
       );
       if (kot) {
         res.json({
@@ -57,9 +58,11 @@ const putOrders = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
+
     res.json({
       status: 500,
-      message: "Internal server error",
+      message: "Internal Server Error",
     });
   }
 };
