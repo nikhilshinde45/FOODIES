@@ -30,7 +30,7 @@ const waiterSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
-  priviliege: {
+  privilege: {
     type: String,
     default: "waiter",
   },
