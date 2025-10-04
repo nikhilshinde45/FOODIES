@@ -3,8 +3,11 @@ const { Feedback } = require("../../models/feedbackModel");
 const getFeedback = async (req, res) => {
   try {
     const privilege = req.privilege;
+
     if (privilege === "admin") {
-      const feedback = await Feedback.find({}).Sort({ _id: -1 });
+     
+    
+      const feedback = await Feedback.find({}).sort({ _id: -1 });
       res.json({
         status: 200,
         message: "Fetched Feedbacks Successfully",
@@ -17,6 +20,7 @@ const getFeedback = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
     res.json({
       status: 500,
       message: "Internal server error",

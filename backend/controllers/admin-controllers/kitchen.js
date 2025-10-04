@@ -9,7 +9,7 @@ const getChefs = async (req, res) => {
     const privilege = req.privilege;
     // recently added chef comes first
     if (privilege === "admin") {
-      const data = (await Chef.find({})).sort({ _id: -1 });
+      const data = await Chef.find({privilege:'chef'});
 
       res.json({
         status: 200,
