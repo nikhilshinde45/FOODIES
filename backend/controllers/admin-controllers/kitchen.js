@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const getChefs = async (req, res) => {
   try {
+    
     const privilege = req.privilege;
     // recently added chef comes first
     if (privilege === "admin") {
