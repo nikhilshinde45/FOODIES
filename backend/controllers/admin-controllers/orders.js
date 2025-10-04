@@ -182,7 +182,7 @@ const removeHistoryItem = async (req, res) => {
     const privilege = req.privilege;
     if (privilege === "admin") {
       const { id } = req.params.id;
-      const data = await KOT.findByIdAndDelete({ _id: id });
+      const data = await KOT.findByIdAndDelete(id);
       if (data) {
         res.json({
           status: 200,
