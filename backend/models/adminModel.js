@@ -21,7 +21,7 @@ const adminSchema = new mongoose.Schema({
     type: String,
     default: "0",
   },
-  priviliege: {
+  privilege: {
     type: String,
     default: "admin",
   },
