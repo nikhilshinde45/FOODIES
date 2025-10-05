@@ -8,7 +8,7 @@ const getBookingRequests = async (req, res) => {
     const privilege = req.privilege;
     if (privilege === "admin") {
       const data = await Table.find({});
-      res.josn({
+      res.json({
         status: 200,
         data,
       });
@@ -185,7 +185,7 @@ const freeTable = async (req, res) => {
   try {
     const privilege = req.privilege;
     if (privilege === "admin") {
-      const id = req.id; //tbid
+      const id = req.body.id; //tbid i have changed later
       const table = await Table.findByIdAndUpdate(
         {
           _id: id,
