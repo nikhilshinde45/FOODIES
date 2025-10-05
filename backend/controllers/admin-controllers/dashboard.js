@@ -40,7 +40,7 @@ const getDashboardData = async (req, res) => {
         totalWaiters: waiters.length,
         totalChefs: chefs.length,
         totalOrder: orders.length,
-        totalTable: tables.length,
+        totalTables: tables.length,
         totalMenuItems: menuItems.length,
         totalReservations: reservations.length,
         totalOrdersInKitchen: ordersInKitchen.length,
