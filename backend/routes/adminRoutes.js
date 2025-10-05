@@ -31,7 +31,7 @@ const {
   getOrderHistory,
   approveOrder,
   rejectOrder,
-  markBillPaaid,
+  markBillPaid,
   removeHistoryItem,
   clearHistory,
 } = require("../controllers/admin-controllers/orders");
@@ -91,7 +91,7 @@ adminRouter.get("/orders/current-bills", checkAuthorization, getcurrentKOTs);
 adminRouter.get("/orders/order-history", checkAuthorization, getOrderHistory);
 adminRouter.put("/orders/approve", checkAuthorization, approveOrder);
 adminRouter.put("/orders/reject", checkAuthorization, rejectOrder);
-adminRouter.put("/orders/mark-paid", checkAuthorization, markBillPaaid);
+adminRouter.put("/orders/mark-paid", checkAuthorization, markBillPaid);
 adminRouter.delete("/orders/remove-item/:id", checkAuthorization,removeHistoryItem);
 adminRouter.delete("/orders/clear-all", checkAuthorization, clearHistory);
 
