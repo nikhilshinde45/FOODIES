@@ -215,7 +215,7 @@ const resetPasswordStaff = async (req, res) => {
       if (waiter) {
         const savedvfcode = waiter.vfcode;
         if (savedvfcode == vfcode) {
-          const hashedPass = bcrypt(password, 10);
+          const hashedPass =await bcrypt.hash(password, 10);
           await waiter.updateOne({
             password: hashedPass,
             vfcode: "0",
