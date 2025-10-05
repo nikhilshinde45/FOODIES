@@ -7,11 +7,11 @@ const getAllTablesData = async (req, res) => {
     const privilege = req.privilege;
 
     if (privilege === "user") {
-      const tables = await Table.find({});
+      const data = await Table.find({});
       res.json({
         status: 200,
         message: "All tables are fetched",
-        tables,
+        data,
       });
     } else {
       res.json({
