@@ -6,7 +6,7 @@ const getMenuItem = async (req, res) => {
     if (privilege === "admin") {
       const data = await Menu.find({});
       res.json({
-        statu: 200,
+        status: 200,
         message: "Here is all menu items",
         data,
       });
