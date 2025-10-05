@@ -114,7 +114,7 @@ const rejectOrder = async (req, res) => {
 };
 
 //mark the bill as paid only after placinf the all order cuz kot is freed here
-const markBillPaaid = async (req, res) => {
+const markBillPaid = async (req, res) => {
   try {
     const privilege = req.privilege;
     if (privilege === "admin") {
@@ -181,7 +181,7 @@ const removeHistoryItem = async (req, res) => {
   try {
     const privilege = req.privilege;
     if (privilege === "admin") {
-      const { id } = req.params.id;
+      const  id  = req.params.id;
       const data = await KOT.findByIdAndDelete(id);
       if (data) {
         res.json({
@@ -237,7 +237,7 @@ module.exports = {
   getcurrentKOTs,
   approveOrder,
   rejectOrder,
-  markBillPaaid,
+  markBillPaid,
   getOrderHistory,
   removeHistoryItem,
   clearHistory,
