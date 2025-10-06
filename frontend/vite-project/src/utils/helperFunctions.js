@@ -144,5 +144,5 @@ export const getCategoryName = (index) =>{
 
 // function to provide the base URL for API calls
 export function getBaseUrl(){
-    return 'http://localhost:3000';
+    return 'https://foodies-hotel.onrender.com';
 }
