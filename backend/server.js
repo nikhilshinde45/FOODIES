@@ -18,7 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: `https://foodies-hotel.onrender.com`,
+  origin: `https://foodies-hotel-5m3f.onrender.com`,
+  
   credentials: true,
 };
 app.use(cors(corsOptions));
