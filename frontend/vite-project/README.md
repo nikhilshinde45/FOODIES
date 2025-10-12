@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 =======
 # 🍴 Restaurant Management System
@@ -85,4 +85,4 @@ Provides user authentication and access management to protect sensitive data and
 *Passwords hashed with bcrypt for data protection.
 
 *Role-based access ensures that each user only sees relevant features.
->>>>>>> da9061d (readme file added)
+
