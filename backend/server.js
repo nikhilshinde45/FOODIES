@@ -32,6 +32,7 @@ app.use("/customer", customerRouter); //router for all user functions
 app.use("/chef", chefRouter); //router for all chef functions
 app.use("/waiter", waiterRouter); //router for all waiter functions
 
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
