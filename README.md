@@ -38,6 +38,9 @@ Clean, easy-to-navigate design that simplifies operations for all roles — from
 ### 🔐 Secure Login System
 Provides user authentication and access management to protect sensitive data and prevent unauthorized access.
 
+
+---
+
 🚀 Usage Guide
 👥 User Roles
 
@@ -72,8 +75,10 @@ Provides user authentication and access management to protect sensitive data and
 * Passwords hashed with bcrypt for data protection.
 * Role-based access ensures that each user only sees relevant features.
 
+---
 
 🛠️ Technology Stack
+
 **Frontend**
 * React.js: For building a dynamic and responsive User Interface.
 * CSS: Custom styling for a clean, modern aesthetic.
@@ -96,73 +101,88 @@ Provides user authentication and access management to protect sensitive data and
 + Base64 Encryption: Used for secure data encoding within specific workflows.
 + Role-Based Access (RBAC): Strict middleware-level checks to ensure users only access authorized data.
 
+---
 
 ⚙️ Installation & Setup
 
-
 1. Clone the Repository
-Bash
+```Bash
 
 git clone https://github.com/nikhilshinde45/FOODIES.git
 cd RESTAURANT
+```
 
 2. Environment Variables
 Create a .env file in the backend directory and add the following:
 
-Code snippet
-
+```bash
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 EMAIL_USER=your_email
 EMAIL_PASS=your_email_password
+```
 
-3. Local Installation (Without Docker)
+3. Local Installation
 Backend:
 
-Bash
-
+```Bash
 cd backend
 npm install
 npm start
 cd..
+```
 Frontend:
 
-Bash
-
+```Bash
 cd frontend
 npm install
 npm run dev
+```
 
 
-🐳 Docker Setup 
-To run the entire application ( Backend and Database) seamlessly:
+🐳 ***Docker Setup***
+  * To run the entire application ( Backend and Database) seamlessly:
 
 1. Build and Run Containers
-Ensure you are in the root directory where docker-compose.yml is located:
+Go to the root directory where docker-compose.yml is located:
 
-Bash
+
 
 🛠️ Docker Commands
 
 **Start the Application:**
 
-  * docker-compose up --build — Builds the images and starts all services.
+```Bash
 
-  * docker-compose up -d — Starts the services in detached mode (background).
+  * docker-compose up --build  — Builds the images and starts all services.
+
+  * docker-compose up -d  — Starts the services in detached mode (background).
+```
 
 **Stop the Application:**
 
+```Bash
+
   * docker-compose down — Stops and removes the containers and networks.
 
-  * docker-compose down -v — Stops containers and deletes the database volumes .
+  * docker-compose down -v — Stops containers and deletes the database volumes.
+```
 
 **View Logs:**
 
+```Bash
+
   *docker-compose logs -f — View live logs from all services to debug connection issues.
+```
 
 
-2. Access the Application
-Frontend: http://localhost:5173 
-
-Backend API: http://localhost:3000
+**Access the Application**
+1. Frontend:
+```Bash
+ http://localhost:5173 
+ ```
+2.Backend API:
+```Bash
+ http://localhost:3000
+```
