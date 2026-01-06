@@ -1,7 +1,7 @@
-=======
-# 🍴 Restaurant Management System
 
-The **Restaurant Management System** is a comprehensive web application designed to streamline restaurant operations — including **table management**, **reservations**, **waiter allotment**, **order tracking**, and **bill generation** — all within one unified platform.  
+# 🍴 FOODIES
+
+The **FOODIES** is a comprehensive web application designed to streamline restaurant operations — including **table management**, **reservations**, **waiter allotment**, **order tracking**, and **bill generation** — all within one unified platform.  
 This system enhances efficiency, coordination, and customer satisfaction through an intuitive interface and real-time functionality.
 
 Developed to simplify day-to-day restaurant management, the platform provides **role-based access control**, **KOT (Kitchen Order Ticket)** integration, and a **Kitchen Display System (KDS)** for smooth communication between staff and kitchen operations.
