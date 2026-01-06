@@ -1,0 +1,55 @@
+#version: "3.8"
+
+services:
+ mongodb:
+  image: mongo:6
+  container_name: foodies-mongodb
+  restart: always
+  ports:
+   - "27017:27017"
+ 
+  env_file:
+    - docker.env
+  volumes:
+   - mongo_data:/data/db
+ 
+ mongo-express:
+  image: mongo-express:latest
+  container_name: foodies-mongo-express
+  restart: always
+  ports:
+   - "8081:8081"
+  depends_on:
+   - mongodb
+  environment:
+   ME_CONFIG_MONGODB_SERVER: mongodb
+   ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+   ME_CONFIG_MONGODB_ADMINPASSWORD: qwerty
+   ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+  env_file:
+   - docker.env
+
+ backend:
+  build: .
+  image: foodies-backend
+  container_name: foodies-backend
+  restart: always
+  ports:
+   - "3000:3000"
+  depends_on:
+   - mongodb
+  env_file:
+   - docker.env
+ 
+
+volumes:
+  mongo_data:
+  
+
+
+ 
+  
+
+
+
+
