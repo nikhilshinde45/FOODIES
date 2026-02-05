@@ -13,18 +13,14 @@ const razorpay = new Razorpay({
 const createOrder = async(req,res)=>{
   try{
    const {amount} = req.body;
-
+ console.log(amount);
    const order = await razorpay.orders.create({
-    amount:amount*100,
-    currency:'INR',
+    amount : amount*100,
+    currency :"INR",
     receipt:'foodies_receipt'
    });
 
-   res.json({
-     status :200,
-     order,
-     message:"Payment Order Created Successfully"
-   });
+      res.status(200).json(order);
 
   }catch(error){
     res.json({
