@@ -66,7 +66,18 @@ Provides user authentication and access management to protect sensitive data and
 * Automatic notifications for order received, under preparation, and ready to serve.
 
 5.💵 Billing & Payment
-* The system automatically generates bills based on completed orders.
+### 💳 Payment Integration (Razorpay)
+
+### 💳 Payment Integration (Razorpay)
+
+- FOODIES supports secure online bill payments for customers using Razorpay.
+- The system automatically generates bills based on completed orders.
+- Customers can complete bill payments via Razorpay Checkout.
+- Payment orders are created on the backend and verified using cryptographic signature validation.
+- Customers can download the generated invoice after bill creation.
+- Sensitive credentials are securely handled using backend environment variables.
+
+
 * Admin can view daily sales reports and manage payment records.
 
 6.🔐 Authentication & Security
