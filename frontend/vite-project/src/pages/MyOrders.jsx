@@ -40,6 +40,11 @@ export default function MyOrders(){
 
 
     const handlePayment = async () =>{
+
+    if(!currOrders || !currOrders.totalPrice || currOrders.totalPrice <= 0) {
+           toast.error("No payable order found");
+           return;
+    }
         try{
             const token = sessionStorage.getItem('token');
             console.log("TOTAL PRICE:", currOrders.totalPrice);
