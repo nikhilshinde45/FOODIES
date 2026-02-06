@@ -20,6 +20,7 @@ export default function MyOrders(){
     const [currOrders, setCurrOrders] = useState({});
     const [refresh, setRefresh] = useState(false);
     const [showBill, setShowBill] = useState(false);
+    
 
     const handleDownload = () => {
         const input = document.getElementById('billContent');
@@ -36,6 +37,66 @@ export default function MyOrders(){
         };
         html2pdf().from(input).set(opt).save();
     };
+
+
+    const handlePayment = async () =>{
+        try{
+            const token = sessionStorage.getItem('token');
+            console.log("TOTAL PRICE:", currOrders.totalPrice);
+
+            const res = await axios.post(getBaseUrl()+"/customer/payment/create-order",{
+                amount: currOrders.totalPrice
+            },
+            {headers: {
+                Authorization: `Bearer ${token}`
+            },
+        }
+        );
+
+        const options = {
+            key: "rzp_test_SBmpvxnVWlGhaN",
+            amount: res.data.amount,
+            currency: "INR",
+            name: "Foodies Restaurant",
+            description: "Bill Payment",
+            order_id: res.data.id,
+
+            handler: async function (response) {
+                await axios.post(getBaseUrl()+"/customer/payment/verify-payment",
+                    response,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        },
+                    }
+                );
+            toast.success("Payment successful. Thank you for dining with us!");
+
+            
+            setShowBill(false);
+
+            setTimeout(() => {
+                navigate("/home");
+            },1500);
+
+
+            },
+           theme: {
+    color: "#0a64f5"
+}
+
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+
+        }catch(error){
+            console.log(error);
+            toast.error("Payment Failed");
+        }
+    }
+
+
 
     const putUserInformation = () =>{
         const token = sessionStorage.getItem('token');
@@ -184,9 +245,22 @@ export default function MyOrders(){
             {showBill && (
                 <div style={{width: 'min(96%, 500px)', height: 'fit-content', position: 'absolute', top: '100px', left: 'calc((100% - min(96%, 500px))/2)', backgroundColor:'white', borderRadius:'10px', boxShadow:'0 2px 4px gray', padding:'10px', border:'1px solid rgb(127, 127, 127)'}}>
                     <BillComponent bill={currOrders}/>
+                    
                     <div style={{display:'flex', alignItems:'center', justifyContent:'center', gap:'10px'}}>
-                        <Button bg='red' color='white' onClick={()=>setShowBill(false)}>Close</Button>
-                        <Button bg='#2aff00' onClick={handleDownload}>Download</Button>
+                       <Button bg='red' color='white' onClick={()=>setShowBill(false)}>
+        Close
+      </Button>
+
+                       <Button bg='#2aff00' onClick={handleDownload}>
+    Download
+</Button>
+
+
+                         <Button bg='blue' color='white' onClick={handlePayment}>
+        Pay Now
+    </Button>
+
+
                     </div>
                 </div>
             )}
