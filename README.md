@@ -68,8 +68,6 @@ Provides user authentication and access management to protect sensitive data and
 5.💵 Billing & Payment
 ### 💳 Payment Integration (Razorpay)
 
-### 💳 Payment Integration (Razorpay)
-
 - FOODIES supports secure online bill payments for customers using Razorpay.
 - The system automatically generates bills based on completed orders.
 - Customers can complete bill payments via Razorpay Checkout.
