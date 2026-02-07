@@ -62,8 +62,6 @@ const ProtectedRoute = ({ privilege, component, navigatePath }) => {
         setReady(true);
     }, [privilege]);
 
-    console.log("READY:", ready, "AUTHORIZED:", authorized);
-
     if (!ready) {
         return <div>Loading...</div>;
     }
