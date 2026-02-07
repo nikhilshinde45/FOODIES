@@ -19,6 +19,8 @@ import MyOrders from './pages/MyOrders';
 import KDSPage from './pages/KDSPage';
 import WaiterPage from './pages/WaiterPage';
 import FAQPage from './pages/FAQPage';
+import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 
 function App() {
     return (
@@ -48,14 +50,28 @@ function App() {
     )
 }
 
-const ProtectedRoute = ({privilege, component, navigatePath}) =>{
-    const auth = checkAuthority(privilege);
-    if(auth){
-        return component;
-    }
-    else{
-        return <Navigate to={navigatePath}/>
-    }
+
+
+const ProtectedRoute = ({ privilege, component, navigatePath }) => {
+        const [ready, setReady] = useState(false);
+        const [authorized, setAuthorized] = useState(false);
+
+useEffect(() => {
+             const result = checkAuthority(privilege);
+             setAuthorized(result);
+             setReady(true);
+}, [privilege]);
+
+if (!ready) {
+        return <div>Loading...</div>;
 }
+
+    if (!authorized) {
+        return <Navigate to={navigatePath} replace />;
+}
+
+        return component;
+};
+
 
 export default App;
