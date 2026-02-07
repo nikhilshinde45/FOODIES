@@ -52,24 +52,27 @@ function App() {
 
 
 const ProtectedRoute = ({ privilege, component, navigatePath }) => {
-        const [ready, setReady] = useState(false);
-        const [authorized, setAuthorized] = useState(false);
+    const [ready, setReady] = useState(false);
+    const [authorized, setAuthorized] = useState(false);
 
-useEffect(() => {
-             const result = checkAuthority(privilege);
-             setAuthorized(result);
-             setReady(true);
-}, [privilege]);
+    useEffect(() => {
+        const result = checkAuthority(privilege);
+        console.log("AUTH CHECK:", privilege, result);
+        setAuthorized(result);
+        setReady(true);
+    }, [privilege]);
 
-if (!ready) {
+    console.log("READY:", ready, "AUTHORIZED:", authorized);
+
+    if (!ready) {
         return <div>Loading...</div>;
-}
+    }
 
     if (!authorized) {
         return <Navigate to={navigatePath} replace />;
-}
+    }
 
-        return component;
+    return component;
 };
 
 
