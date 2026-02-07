@@ -1,4 +1,6 @@
 import { StrictMode } from 'react'
+console.log("MAIN.JSX LOADED");
+
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
