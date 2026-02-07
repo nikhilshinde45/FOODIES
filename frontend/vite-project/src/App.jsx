@@ -20,7 +20,6 @@ import KDSPage from './pages/KDSPage';
 import WaiterPage from './pages/WaiterPage';
 import FAQPage from './pages/FAQPage';
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
 
 function App() {
     return (
