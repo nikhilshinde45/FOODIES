@@ -21,7 +21,7 @@ const signupUser = async (req, res) => {
         password: hashedPass,
       });
       await newUser.save();
-      sendSignupMail(email, name);
+     await sendSignupMail(email, name);
       res.json({
         status: 201,
         message: "User registered successfully",
@@ -80,6 +80,8 @@ const loginUser = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   try {
+       
+
     const username = req.params.username;
     const user = await User.findOne({ username });
     if (user) {
@@ -87,7 +89,11 @@ const forgotPassword = async (req, res) => {
       const vfcode = generateVerificationCode(6);
       user.vfcode = vfcode;
       await user.save();
-      sendVFCodeMail(email, vfcode);
+           
+
+      await sendVFCodeMail(email, vfcode);
+           
+
 
       res.json({
         status: 200,
