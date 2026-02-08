@@ -1,5 +1,5 @@
-const nodemailer = require("nodemailer");
 require("dotenv").config();
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -10,9 +10,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendSignupMail = (emailid, name) => {
+const sendSignupMail = async (emailid, name) => {
   try {
-    const info = transporter.sendMail({
+    const info = await transporter.sendMail({
       from: process.env.USER,
       to: emailid,
       subject: "Registration Successful",
@@ -21,20 +21,21 @@ Dear ${name},
 Your registration at the foodies website is successful. 
 You can now avail the services provided by the restaurant. 
 Use your registered username and password to login.
-      
 
-Thankyou...
+Thank you...
 Team Foodies`,
     });
-    console.log("Signup email sent to : ", name);
+
+    console.log("Signup email sent:", info.response);
   } catch (error) {
-    console.log("Error sending signup email", error);
+    console.log("Error sending signup email:", error);
+    throw error;
   }
 };
 
-const sendVFCodeMail = (emailid, vfcode) => {
+const sendVFCodeMail = async (emailid, vfcode) => {
   try {
-    const info = transporter.sendMail({
+    const info = await transporter.sendMail({
       from: process.env.USER,
       to: emailid,
       subject: "Reset Password",
@@ -44,13 +45,14 @@ Use the following verification code to reset your password.
 
 ${vfcode}
 
-Thankyou...
+Thank you...
 Team Foodies`,
     });
 
-    console.log("Verification code email sent");
+    console.log("Verification code email sent:", info.response);
   } catch (error) {
-    console.log("Error sending signup email", error);
+    console.log("Error sending verification email:", error);
+    throw error;
   }
 };
 
