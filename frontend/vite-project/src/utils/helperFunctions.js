@@ -145,5 +145,6 @@ export const getCategoryName = (index) =>{
 // function to provide the base URL for API calls
 export function getBaseUrl(){
   return 'https://foodies-backend-vv60.onrender.com'
+  
  
 }
